@@ -21,11 +21,16 @@ public interface ForgettingCurveService {
     public List<Map<String,Object>> getLTTodayList(String localDateTime);
 
     public List<Map<String,Object>> getBetweenTodayList(String startLocalDateTime,String endLocalDateTime);
+    
+    public void toNextRemind(Integer forgetting_curve_id);
 
-    public void toNextRemind(ForgettingCurve forgettingCurve);
+    public void updateNrtAf(ForgettingCurve forgettingCurve);
+
+    public void updateNrtAfF(ForgettingCurve forgettingCurve);
 
     public List<ForgettingCurve> findListAllAdd1();
 
     public List<Map> test2();
 
+    public void saveNowRecord(String forgetting_curve_name,String context);
 }

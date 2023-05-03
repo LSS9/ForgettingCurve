@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import com.github.pagehelper.PageHelper;
 import com.project.task.ForgettingCurveTask;
 import com.project.pojo.File;
 import com.project.pojo.ForgettingCurve;
@@ -29,7 +30,6 @@ public class ForgettingCurveController {
     @Autowired
     private ForgettingCurveTask forgettingCurveTask;
 
-
     @GetMapping("/test")
     @ResponseBody
     public Result<Object> test() {
@@ -48,6 +48,7 @@ public class ForgettingCurveController {
     public Result<Object> test2() {
         List<Map> list = new ArrayList<>();
         try{
+            //PageHelper.startPage(1, 10);
             list = forgettingCurveService.test2();
         }catch (Exception e){
             e.printStackTrace();
@@ -56,6 +57,20 @@ public class ForgettingCurveController {
         return Result.success(list);
     }
 
+    @GetMapping("/test3")
+    @ResponseBody
+    public Result<Object> test3(LocalDateTime time) {
+        List<Map> list = new ArrayList<>();
+        try{
+            ForgettingCurve forgettingCurve = new ForgettingCurve();
+            forgettingCurve.setCreation_time(time);
+            System.out.println(forgettingCurve.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+            return Result.error(ResultEnum.EXCEPTION);
+        }
+        return Result.success(list);
+    }
 
     @GetMapping("/list")
     @ResponseBody
@@ -81,10 +96,23 @@ public class ForgettingCurveController {
         return Result.success();
     }
 
+//    @PostMapping("/save")
+//    @ResponseBody
+//    public Result save(ForgettingCurve forgettingCurve){
+//        try{
+//            forgettingCurveService.save(forgettingCurve);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//            return Result.error(ResultEnum.EXCEPTION);
+//        }
+//        return Result.success();
+//    }
+
     @GetMapping("/delete")
     @ResponseBody
     public Result delete(Integer forgetting_curve_id){
         try{
+            if (forgetting_curve_id == null) return Result.error(ResultEnum.PARAMETER_EXCEPTION);
             forgettingCurveService.delete(forgetting_curve_id);
         }catch (Exception e){
             e.printStackTrace();
@@ -103,20 +131,12 @@ public class ForgettingCurveController {
     @ResponseBody
     public Result saveNowRecord(String forgetting_curve_name,String context){
         try{
-            //现将文件内容、open_forgetting_curve=1存入file表
-            File file = new File();
-            file.setContext(context);
-            file.setOpen_forgetting_curve(1);
-            file = fileService.save(file);
+            if (forgetting_curve_name == null || "".equals(forgetting_curve_name)) return Result.error(ResultEnum.PARAMETER_EXCEPTION);
+            if (context == null) return Result.error(ResultEnum.PARAMETER_EXCEPTION);
+            String file_id = fileService.saveOfcC(context);
             //存入关联文件id、创建时间、循环开启时间、次数
             LocalDateTime localDateTime = LocalDateTime.now();
-            ForgettingCurve forgettingCurve = new ForgettingCurve();
-            forgettingCurve.setForgetting_curve_name(forgetting_curve_name);
-            forgettingCurve.setFrequency(1);
-            forgettingCurve.setRelevant_file(file.getFile_id().toString());
-            forgettingCurve.setCycle_opening_time(localDateTime);
-            forgettingCurve.setCreation_time(localDateTime);
-            forgettingCurve.setAdd_frequency(1);
+            ForgettingCurve forgettingCurve = new ForgettingCurve(forgetting_curve_name, file_id, localDateTime, localDateTime, 1, 1);
             forgettingCurveService.save(forgettingCurve);
         }catch (Exception e){
             e.printStackTrace();
@@ -164,12 +184,8 @@ public class ForgettingCurveController {
     @ResponseBody
     public Result toNextRemind(Integer forgetting_curve_id){
         try{
-            //修改下次提醒时间为当前时间，次数加一
-            ForgettingCurve forgettingCurve = new ForgettingCurve();
-            forgettingCurve.setForgetting_curve_id(forgetting_curve_id);
-            forgettingCurve.setNext_remind_time(LocalDateTime.now());
-            forgettingCurve.setAdd_frequency(1);
-            forgettingCurveService.toNextRemind(forgettingCurve);
+            if (forgetting_curve_id == null) return Result.error(ResultEnum.PARAMETER_EXCEPTION);
+            forgettingCurveService.toNextRemind(forgetting_curve_id);
             //更新下次提醒时间
             forgettingCurveTask.updateRemindeTask();
         }catch (Exception e){

@@ -4,10 +4,16 @@ import com.project.mapper.ForgettingCurveMapper;
 import com.project.pojo.ForgettingCurve;
 import com.project.repoistry.ForgettingCurveRepository;
 import com.project.service.ForgettingCurveService;
+import com.project.pojo.File;
+import com.project.pojo.ForgettingCurve;
+import com.project.repoistry.ForgettingCurveRepository;
+import com.project.service.ForgettingCurveService;
+import com.project.task.ForgettingCurveTask;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -63,8 +69,41 @@ public class ForgettingCurveServiceImpl implements ForgettingCurveService{
     }
 
     @Override
-    public void toNextRemind(ForgettingCurve forgettingCurve) {
-        forgettingCurveMapper.toNextRemind(forgettingCurve);
+    public void toNextRemind(Integer forgetting_curve_id) {
+        /**
+         * 根据id原来的下次提醒时间来区分
+         * 时间太久的提醒次数（frequency）归2
+         * 时间正常的提醒次数（frequency）加一
+         */
+        ForgettingCurve oldForgettingCurve = forgettingCurveRepository.findById(forgetting_curve_id).get();
+        Duration dur= Duration.between(oldForgettingCurve.getNext_remind_time(),LocalDateTime.now());
+        long days = dur.toDays();
+        //修改下次提醒时间为当前时间，添加次数归一
+        ForgettingCurve forgettingCurve = new ForgettingCurve();
+        forgettingCurve.setForgetting_curve_id(forgetting_curve_id);
+        forgettingCurve.setNext_remind_time(LocalDateTime.now());
+        if (days > 60){//提醒次数（frequency）归2
+            forgettingCurve.setFrequency(2);
+            updateNrtAfF(forgettingCurve);
+        }else if (days > 30){//提醒次数（frequency）归3
+            forgettingCurve.setFrequency(3);
+            updateNrtAfF(forgettingCurve);
+        }else if (days > 7){//提醒次数（frequency）归4
+            forgettingCurve.setFrequency(4);
+            updateNrtAfF(forgettingCurve);
+        }else {//提醒次数加一
+            updateNrtAf(forgettingCurve);
+        }
+    }
+
+    @Override
+    public void updateNrtAf(ForgettingCurve forgettingCurve) {
+        forgettingCurveMapper.updateNrtAf(forgettingCurve);
+    }
+
+    @Override
+    public void updateNrtAfF(ForgettingCurve forgettingCurve) {
+        forgettingCurveMapper.updateNrtAfF(forgettingCurve);
     }
 
     @Override
@@ -77,5 +116,10 @@ public class ForgettingCurveServiceImpl implements ForgettingCurveService{
         return forgettingCurveMapper.test2();
     }
 
+
+    @Override
+    public void saveNowRecord(String forgetting_curve_name, String context) {
+
+    }
 
 }

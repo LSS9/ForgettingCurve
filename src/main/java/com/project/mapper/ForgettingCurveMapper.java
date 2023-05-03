@@ -2,6 +2,7 @@ package com.project.mapper;
 
 import com.project.pojo.ForgettingCurve;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +20,15 @@ public interface ForgettingCurveMapper {
 
     public void updateList(List<ForgettingCurve> forgettingCurveList);
 
-    public List<Map<String, Object>> getLTTodayList(String localDateTime);
+    public void toNextRemind(ForgettingCurve forgettingCurve);
+
+    public List<Map<String, Object>> getLTTodayList(@Param("localDateTime") String localDateTime);
 
     public List<Map<String,Object>> getBetweenTodayList(Map<String, Object> map);
 
-    public void toNextRemind(ForgettingCurve forgettingCurve);
+    public void updateNrtAf(ForgettingCurve forgettingCurve);
+
+    public void updateNrtAfF(ForgettingCurve forgettingCurve);
 
     /**
      * 获取add_frequency = 1的记录

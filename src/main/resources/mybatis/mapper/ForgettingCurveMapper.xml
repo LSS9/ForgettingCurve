@@ -39,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 <foreach collection="list" item="item" index="index" separator=" ">
                     when forgetting_curve_id=#{item.forgetting_curve_id}
                     then #{item.add_frequency}
+                    then 0
                 </foreach>
             </trim>
         </trim>
@@ -92,6 +93,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             next_remind_time = #{next_remind_time},
             add_frequency = #{add_frequency},
             frequency = frequency + 1
+        WHERE
+            forgetting_curve_id = #{forgetting_curve_id}
+    </update>
+
+
+
+    <update id="updateNrtAf" parameterType="forgettingCurve">
+        UPDATE forgetting_curve
+        SET
+            next_remind_time = #{next_remind_time},
+            add_frequency = 1,
+            frequency = frequency + 1
+        WHERE
+            forgetting_curve_id = #{forgetting_curve_id}
+    </update>
+
+    <!-- 修改下次提醒时间为当前时间，指定次数 -->
+    <update id="updateNrtAfF" parameterType="forgettingCurve">
+        UPDATE forgetting_curve
+        SET
+            next_remind_time = #{next_remind_time},
+            add_frequency = 1,
+            frequency = #{frequency}
         WHERE
             forgetting_curve_id = #{forgetting_curve_id}
     </update>

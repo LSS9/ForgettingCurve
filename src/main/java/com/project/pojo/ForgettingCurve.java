@@ -2,6 +2,7 @@ package com.project.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -31,6 +32,7 @@ public class ForgettingCurve implements Serializable {
     private LocalDateTime cycle_opening_time;
 
     //下次提醒时间
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
     private LocalDateTime next_remind_time;
 
@@ -114,6 +116,15 @@ public class ForgettingCurve implements Serializable {
         this.creation_time = creation_time;
         this.cycle_opening_time = cycle_opening_time;
         this.next_remind_time = next_remind_time;
+        this.frequency = frequency;
+        this.add_frequency = add_frequency;
+    }
+
+    public ForgettingCurve(String forgetting_curve_name, String relevant_file, LocalDateTime creation_time, LocalDateTime cycle_opening_time, Integer frequency, Integer add_frequency) {
+        this.forgetting_curve_name = forgetting_curve_name;
+        this.relevant_file = relevant_file;
+        this.creation_time = creation_time;
+        this.cycle_opening_time = cycle_opening_time;
         this.frequency = frequency;
         this.add_frequency = add_frequency;
     }

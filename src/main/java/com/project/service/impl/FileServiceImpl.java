@@ -20,4 +20,17 @@ public class FileServiceImpl implements FileService {
     public File save(File file) {
         return fileRepository.save(file);
     }
+
+    /**
+     * 保存文件，默认open_forgetting_curve=1，参数为文件内容
+     * @param context
+     * @return
+     */
+    @Override
+    public String saveOfcC(String context) {
+        File file = new File();
+        file.setContext(context);
+        file.setOpen_forgetting_curve(1);
+        return save(file).getFile_id().toString();
+    }
 }
