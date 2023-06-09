@@ -15,7 +15,7 @@ public class BaseController {
 
 
 //        File file = ResourceUtils2222222222222222222222.getFile("classpath:templates/4.html");
-//        String content = new Stdfgdfgdfgring(Files.readAllBytes(file.toPath()));
+//        String content = new Stdfgdfgdftgggggggggggggring(Files.readAllBytes(file.toPath()));
 //        model.addAttribute("content", content);
         return "index";
     }
