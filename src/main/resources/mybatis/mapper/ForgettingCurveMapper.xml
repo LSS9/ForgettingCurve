@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.mapper.ForgettingCurveMapper">
 
 
-    <!-- result类型 -->
+    <!-- result类型111 -->
     <resultMap id="mapResult" type="java.util.HashMap">
         <result property="key" column="forgetting_curve_name" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="value" column="creation_time" jdbcType="VARCHAR" javaType="java.lang.String"/>
