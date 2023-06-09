@@ -19,7 +19,7 @@ spring:
     template-loader-path: classpath:/templates/
 
 server:
-  port: 80
+  port: 8089
 
 mybatis:   # 配置路径从resource下面开始就可以！！！！！
   #  typeAliasesPackage: com.neuedu.entity
@@ -29,3 +29,7 @@ mybatis:   # 配置路径从resource下面开始就可以！！！！！
   # 加载全局的配置文件
   configLocation: classpath:mybatis/mybatis-config.xml
 
+pagehelper:
+  propertyName: propertyValue
+  reasonable: false
+  defaultCount: true # 分页插件默认参数支持 default-count 形式，自定义扩展的参数，必须大小写一致
