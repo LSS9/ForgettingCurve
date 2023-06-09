@@ -11,17 +11,17 @@ public class BaseController {
 
 
     @RequestMapping("/test")
-    public String test() throws IOException {
+    public String test(){
 
 
 //        File file = ResourceUtils.getFile("classpath:templates/4.html");
-//        String content = new String(Files.readAllBytes(file.toPath()));
+//        String content = new Stdfgdfgdfgring(Files.readAllBytes(file.toPath()));
 //        model.addAttribute("content", content);
         return "index";
     }
 
     @RequestMapping("/test2")
-    public String test2() throws IOException {
+    public String test2(){
 //        File file = ResourceUtils.getFile("classpath:templates/4.html");
 //        String content = new String(Files.readAllBytes(file.toPath()));
 //        model.addAttribute("content", content);
