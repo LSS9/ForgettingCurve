@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-02-28T09:30:32.585Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="qMsr6592TRtIlrGjHZB3" version="23.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-29T00:33:58.549Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="wKi5j11bppL166XNcttg" version="23.1.5" type="github">
   <diagram name="第 1 页" id="dwYOAPRFAbXnTIJdFP2D">
-    <mxGraphModel dx="1034" dy="1661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1773" dy="1872" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -169,9 +169,6 @@
         <mxCell id="w_-Rmg408Bc-ehyTXncQ-81" value="电脑端操作" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="98" y="1440" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="w_-Rmg408Bc-ehyTXncQ-82" value="保存原始接收数据日志" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="510" y="2020" width="130" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="w_-Rmg408Bc-ehyTXncQ-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="w_-Rmg408Bc-ehyTXncQ-85" target="w_-Rmg408Bc-ehyTXncQ-89">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
@@ -195,9 +192,6 @@
         </mxCell>
         <mxCell id="w_-Rmg408Bc-ehyTXncQ-90" value="中创交换系统" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="657" y="1580" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="w_-Rmg408Bc-ehyTXncQ-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="w_-Rmg408Bc-ehyTXncQ-93" target="w_-Rmg408Bc-ehyTXncQ-82">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="w_-Rmg408Bc-ehyTXncQ-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="w_-Rmg408Bc-ehyTXncQ-93" target="w_-Rmg408Bc-ehyTXncQ-98">
           <mxGeometry relative="1" as="geometry" />
@@ -293,16 +287,16 @@
           <mxGeometry x="430" y="2220" width="50" height="30" as="geometry" />
         </mxCell>
         <mxCell id="w_-Rmg408Bc-ehyTXncQ-125" value="附件处理" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="447" y="2340" width="120" height="60" as="geometry" />
+          <mxGeometry x="420" y="2330" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="w_-Rmg408Bc-ehyTXncQ-128" value="同步呈批件" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="407" y="2288" width="80" height="30" as="geometry" />
+          <mxGeometry x="390" y="2280" width="80" height="30" as="geometry" />
         </mxCell>
         <mxCell id="w_-Rmg408Bc-ehyTXncQ-130" value="流程已读、已执状态" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="190" y="2340" width="120" height="60" as="geometry" />
+          <mxGeometry x="190" y="2330" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="w_-Rmg408Bc-ehyTXncQ-132" value="同步状态" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="277" y="2288" width="70" height="30" as="geometry" />
+          <mxGeometry x="277" y="2280" width="70" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
